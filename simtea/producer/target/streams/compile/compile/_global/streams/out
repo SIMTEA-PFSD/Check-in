@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Users\ThinkPad\SIMTEA\simtea\producer\src\main\scala\Main.scala:22:7: not found: value riskLevel[0m
+[0m[[0m[31merror[0m] [0m[0m      riskLevel = "BAJO",[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\ThinkPad\SIMTEA\simtea\producer\src\main\scala\models\BaggageEvent.scala:23:26: not found: value riskLevel[0m
+[0m[[0m[31merror[0m] [0m[0m       |  "riskLevel": "$riskLevel",[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

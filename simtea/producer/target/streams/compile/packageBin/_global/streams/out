@@ -1,0 +1,19 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\simtea-producer_2.12-0.1.0.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	config[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\classes\config[0m
+[0m[[0m[0mdebug[0m] [0m[0m	config\KafkaProducerConfig$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\classes\config\KafkaProducerConfig$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	config\KafkaProducerConfig.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\classes\config\KafkaProducerConfig.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\classes\Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\classes\Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	models[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\classes\models[0m
+[0m[[0m[0mdebug[0m] [0m[0m	models\BaggageEvent$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\classes\models\BaggageEvent$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	models\BaggageEvent.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ThinkPad\SIMTEA\simtea\producer\target\scala-2.12\classes\models\BaggageEvent.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
