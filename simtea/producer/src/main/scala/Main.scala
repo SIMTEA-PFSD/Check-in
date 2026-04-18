@@ -2,6 +2,7 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 import config.KafkaProducerConfig
+import models.RiskLevel._
 import models.BaggageEvent
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
@@ -19,7 +20,7 @@ object Main {
       flightId = "AV-1234",
       location = "Check-in",
       status = "REGISTRADA",
-      riskLevel = "BAJO",
+      riskLevel = ALTO,
       details = "Registro inicial de maleta en el sistema"
     )
 

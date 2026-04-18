@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Users\ThinkPad\SIMTEA\simtea\processor\src\main\scala\Main.scala:4:8: object KafkaProducerConfig is not a member of package config[0m
+[0m[[0m[31merror[0m] [0m[0mimport config.{KafkaConsumerConfig, KafkaProducerConfig}[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\ThinkPad\SIMTEA\simtea\processor\src\main\scala\Main.scala:15:54: not found: value KafkaProducerConfig[0m
+[0m[[0m[31merror[0m] [0m[0m    val producer = new KafkaProducer[String, String](KafkaProducerConfig.properties)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

@@ -1,5 +1,7 @@
 package models
 
+import models.RiskLevel._
+
 case class BaggageEvent(
     eventId: String,
     eventType: String,
@@ -8,7 +10,7 @@ case class BaggageEvent(
     flightId: String,
     location: String,
     status: String,
-    riskLevel: String,
+    riskLevel: RiskLevel,
     details: String
 ) {
     def toJson: String =
