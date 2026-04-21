@@ -41,7 +41,7 @@ object Equipaje {
             id = UUID.randomUUID().toString,
             codigoRFID = codigoRFID,
             peso = peso,
-            estado = EstadoEquipaje.REGISTRADO,
+            estado = EstadoEquipaje.Registrado,
             pasajeroId = pasajeroId,
             vueloId = vueloId,
             timestampCheckin = Instant.now()

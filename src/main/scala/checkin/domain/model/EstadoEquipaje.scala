@@ -21,7 +21,7 @@ object EstadoEquipaje {
     * Define las transiciones válidas. El Check-in solo produce REGISTRADO,
     * pero dejamos la función aquí para que otros microservicios la reutilicen.
     */
-    def esTranscicionValida(desde: EstadoEquipaje, hacia: EstadoEquipaje): Boolean =
+    def esTransicionValida(desde: EstadoEquipaje, hacia: EstadoEquipaje): Boolean =
         (desde, hacia) match {
             case (Registrado, EnSeguridad) => true
             case (EnSeguridad, EnBodega) => true

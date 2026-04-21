@@ -3,39 +3,63 @@
 //  Programación Funcional y Sistemas Distribuidos
 // ============================================================
 
-name := "checkin-service"
-version := "0.1.0"
+name         := "checkin-service"
+version      := "0.1.0"
 scalaVersion := "2.13.12"
 
-// Opciones del compilador para código más seguro e idiomático
 scalacOptions ++= Seq(
   "-deprecation",
   "-feature",
   "-unchecked",
   "-Xlint:_",
-  "-Ywarn-dead-code",
-  "-Ywarn-unused"
+  "-Ywarn-dead-code"
 )
 
-// Dependencias principales
+// ─── Versiones ──────────────────────────────────────────────
+val http4sVersion     = "0.23.25"
+val circeVersion      = "0.14.6"
+val catsEffectVersion = "3.5.2"
+val doobieVersion     = "1.0.0-RC4"
+
+// ─── Dependencias ───────────────────────────────────────────
 libraryDependencies ++= Seq(
-  // Kafka - cliente oficial (Java lib, pero se usa muy bien desde Scala)
-  "org.apache.kafka"  %  "kafka-clients"     % "3.6.0",
+  // Kafka (productor de eventos)
+  "org.apache.kafka"  %  "kafka-clients"        % "3.6.0",
 
-  // Circe - librería funcional para JSON (inmutable, type-safe)
-  "io.circe"          %% "circe-core"        % "0.14.6",
-  "io.circe"          %% "circe-generic"     % "0.14.6",
-  "io.circe"          %% "circe-parser"      % "0.14.6",
+  // JSON funcional (Circe)
+  "io.circe"          %% "circe-core"           % circeVersion,
+  "io.circe"          %% "circe-generic"        % circeVersion,
+  "io.circe"          %% "circe-parser"         % circeVersion,
 
-  // Configuración tipada (lee application.conf)
-  "com.typesafe"      %  "config"            % "1.4.3",
+  // Efectos funcionales + servidor HTTP (http4s)
+  "org.typelevel"     %% "cats-effect"          % catsEffectVersion,
+  "org.http4s"        %% "http4s-ember-server"  % http4sVersion,
+  "org.http4s"        %% "http4s-dsl"           % http4sVersion,
+  "org.http4s"        %% "http4s-circe"         % http4sVersion,
 
-  // Logging simple
-  "org.slf4j"         %  "slf4j-simple"      % "2.0.9",
+  // Base de datos (PostgreSQL + Doobie, FP puro)
+  "org.tpolecat"      %% "doobie-core"          % doobieVersion,
+  "org.tpolecat"      %% "doobie-hikari"        % doobieVersion,
+  "org.tpolecat"      %% "doobie-postgres"      % doobieVersion,
+  "org.postgresql"    %  "postgresql"           % "42.7.1",
 
-  // Testing
-  "org.scalatest"     %% "scalatest"         % "3.2.17" % Test
+  // Config tipada y logs
+  "com.typesafe"      %  "config"               % "1.4.3",
+  "org.slf4j"         %  "slf4j-simple"         % "2.0.9",
+
+  // Test
+  "org.scalatest"     %% "scalatest"            % "3.2.17" % Test
 )
 
-// Punto de entrada para `sbt run`
 Compile / mainClass := Some("checkin.Main")
+
+// ─── Configuración Docker (sbt-native-packager) ────────────
+// Genera la imagen con:   sbt Docker/publishLocal
+// Y queda como:            checkin-service:0.1.0
+enablePlugins(JavaAppPackaging, DockerPlugin)
+
+Docker / packageName := "checkin-service"
+Docker / version     := version.value
+dockerBaseImage      := "eclipse-temurin:17-jre"
+dockerExposedPorts   := Seq(8081)
+dockerUpdateLatest   := true

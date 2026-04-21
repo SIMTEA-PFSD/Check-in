@@ -1,0 +1,11 @@
+{
+  "pasajeroId":     "p-001",
+  "nombrePasajero": "Paula Valentina Lozano",
+  "documento":      "1000123456",
+  "email":          "vale@example.com",
+  "vueloId":        "AV8321",
+  "equipajes": [
+    { "codigoRFID": "RFID-001", "peso": 18.5 },
+    { "codigoRFID": "RFID-002", "peso": 21.0 }
+  ]
+}

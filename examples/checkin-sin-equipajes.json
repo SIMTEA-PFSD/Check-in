@@ -1,0 +1,8 @@
+{
+  "pasajeroId":     "p-003",
+  "nombrePasajero": "Ana García",
+  "documento":      "3000333444",
+  "email":          "ana@example.com",
+  "vueloId":        "AV9999",
+  "equipajes":      []
+}
