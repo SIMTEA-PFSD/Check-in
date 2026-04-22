@@ -13,12 +13,12 @@ import java.util.UUID
  * tener que definir una subclase por tipo de evento (simplifica el MVP).
  */
 final case class EventoEquipaje(
-  eventId:    UUID,
-  tipo:       TipoEvento,
+  eventId: UUID,
+  tipo: TipoEvento,
   equipajeId: String,
-  timestamp:  Instant,
-  topico:     String,
-  payload:    Map[String, String]
+  timestamp: Instant,
+  topico: String,
+  payload: Map[String, String]
 )
 
 object EventoEquipaje {
@@ -27,17 +27,17 @@ object EventoEquipaje {
   def pasajeroRegistrado(
     equipajeId: String,
     pasajeroId: String,
-    vueloId:    String
+    vueloId: String
   ): EventoEquipaje =
     EventoEquipaje(
-      eventId    = UUID.randomUUID(),
-      tipo       = TipoEvento.PasajeroRegistrado,
+      eventId = UUID.randomUUID(),
+      tipo = TipoEvento.PasajeroRegistrado,
       equipajeId = equipajeId,
-      timestamp  = Instant.now(),
-      topico     = TipoEvento.PasajeroRegistrado.topico,
-      payload    = Map(
+      timestamp = Instant.now(),
+      topico = TipoEvento.PasajeroRegistrado.topico,
+      payload = Map(
         "pasajeroId" -> pasajeroId,
-        "vueloId"    -> vueloId,
+        "vueloId" -> vueloId,
         "equipajeId" -> equipajeId
       )
     )
@@ -46,18 +46,18 @@ object EventoEquipaje {
   def equipajeEscaneado(
     equipajeId: String,
     codigoRFID: String,
-    peso:       Double
+    peso: Double
   ): EventoEquipaje =
     EventoEquipaje(
-      eventId    = UUID.randomUUID(),
-      tipo       = TipoEvento.EquipajeEscaneado,
+      eventId = UUID.randomUUID(),
+      tipo = TipoEvento.EquipajeEscaneado,
       equipajeId = equipajeId,
-      timestamp  = Instant.now(),
-      topico     = TipoEvento.EquipajeEscaneado.topico,
-      payload    = Map(
+      timestamp = Instant.now(),
+      topico = TipoEvento.EquipajeEscaneado.topico,
+      payload = Map(
         "equipajeId" -> equipajeId,
         "codigoRFID" -> codigoRFID,
-        "peso"       -> peso.toString
+        "peso" -> peso.toString
       )
     )
 }

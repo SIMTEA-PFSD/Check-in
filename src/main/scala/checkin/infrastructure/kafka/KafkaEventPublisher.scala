@@ -14,7 +14,7 @@ import java.util.Properties
 import scala.util.{Failure, Success, Try}
 
 /**
- * «adapter» — Publicador de eventos a Kafka.
+ * Publicador de eventos a Kafka.
  *
  * Implementa el port `EventPublisher` del dominio. Se encarga de:
  *   1. Serializar el EventoEquipaje a JSON (Circe)

@@ -11,7 +11,7 @@ import doobie.hikari.HikariTransactor
 import scala.util.control.NonFatal
 
 /**
- * «adapter» Postgres para el puerto PasajeroRepository.
+ * Postgres para el puerto PasajeroRepository.
  *
  * Usa Doobie: escribimos SQL a mano como `sql"..."` (interpolación segura
  * que previene SQL injection), y lo ejecutamos vía Transactor.

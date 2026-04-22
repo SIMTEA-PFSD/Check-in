@@ -6,7 +6,7 @@ import checkin.domain.ports.PasajeroRepository
 import scala.collection.concurrent.TrieMap
 
 /**
- * «adapter» — Implementación en memoria del PasajeroRepository.
+ * Implementación en memoria del PasajeroRepository.
  *
  * Útil para el MVP (semana 1) y para tests. Cuando el equipo integre
  * PostgreSQL, basta con crear `PostgresPasajeroRepository extends PasajeroRepository`

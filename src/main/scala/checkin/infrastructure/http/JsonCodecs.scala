@@ -5,7 +5,7 @@ import io.circe.{Decoder, Encoder, Json}
 import io.circe.syntax._
 
 /**
- * Codificación/decodificación JSON ↔ DTOs de aplicación.
+ * Codificación/decodificación JSON - DTOs de aplicación.
  *
  * Usamos Circe con constructores manuales (forProductN) en vez de auto-
  * derivación por macros. Es más explícito y más fácil de depurar —

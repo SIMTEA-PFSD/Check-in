@@ -3,7 +3,7 @@ package checkin.domain.ports
 import checkin.domain.event.EventoEquipaje
 
 /**
- * «port» — Publicación de eventos al event bus.
+ * Publicación de eventos al event bus.
  *
  * El dominio dice "quiero publicar este evento"; la implementación
  * concreta (KafkaEventPublisher en `infrastructure`) se encarga del
