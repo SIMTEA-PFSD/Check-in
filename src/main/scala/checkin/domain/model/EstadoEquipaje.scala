@@ -1,8 +1,8 @@
 package checkin.domain.model
 
 /**
- * REGISTRADO -> EN_SEGURIDAD -> EN_BODEGA -> EN_BODEGA -> EN_VEHICULO -> ENTREGADO
- *                                                                     -> PERDIDO (anomalía)
+ * REGISTRADO -> EN_SEGURIDAD -> EN_BODEGA -> EN_VEHICULO -> ENTREGADO
+ *                                                        -> PERDIDO (anomalía)
  */
 
 sealed trait EstadoEquipaje {

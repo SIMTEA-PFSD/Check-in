@@ -47,7 +47,7 @@ class KafkaEventPublisher(config: AppConfig) extends EventPublisher {
 
     Try(producer.send(record).get()) match {
       case Success(_)   =>
-        println(s"[Kafka] ✓ Evento publicado → ${evento.topico} | ${evento.tipo}")
+        println(s"[Kafka] Evento publicado → ${evento.topico} | ${evento.tipo}")
         Right(())
       case Failure(ex)  =>
         Left(s"Fallo enviando a Kafka: ${ex.getMessage}")

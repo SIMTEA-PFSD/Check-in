@@ -19,9 +19,7 @@ import scala.util.control.NonFatal
  * Usa UPSERT (`ON CONFLICT DO UPDATE`) — así el mismo pasajero puede
  * hacer múltiples check-ins sin que explote por clave duplicada.
  */
-final class PostgresPasajeroRepository(
-  xa: HikariTransactor[IO]
-)(implicit runtime: IORuntime) extends PasajeroRepository {
+final class PostgresPasajeroRepository(xa: HikariTransactor[IO])(implicit runtime: IORuntime) extends PasajeroRepository {
 
   override def guardar(pasajero: Pasajero): Either[String, Pasajero] = {
     val sqlUpsert =

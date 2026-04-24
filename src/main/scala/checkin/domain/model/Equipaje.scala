@@ -28,15 +28,9 @@ final case class Equipaje(
 object Equipaje {
     /**
     * Factory method: crea un equipaje nuevo en estado REGISTRADO.
-    * Este es el ÚNICO lugar donde un Equipaje puede comenzar su ciclo de vida.
+    * Único lugar donde un Equipaje puede comenzar su ciclo de vida.
     */
-
-    def registrar(
-        codigoRFID: String,
-        peso: Double,
-        pasajeroId: String,
-        vueloId: String
-    ): Equipaje = {
+    def registrar(codigoRFID: String, peso: Double, pasajeroId: String, vueloId: String): Equipaje = {
         Equipaje(
             id = UUID.randomUUID().toString,
             codigoRFID = codigoRFID,

@@ -4,7 +4,7 @@ import java.time.Instant
 import java.util.UUID
 
 /**
- * «value object» — Payload que viaja por Kafka.
+ * Value object — Payload que viaja por Kafka.
  *
  * Es inmutable. Cualquier consumer (Spark Streaming, microservicios) lo
  * deserializa desde JSON y puede reconstruirlo con total seguridad.
@@ -24,11 +24,7 @@ final case class EventoEquipaje(
 object EventoEquipaje {
 
   /** Construye el evento PASAJERO_REGISTRADO (emitido por Check-in). */
-  def pasajeroRegistrado(
-    equipajeId: String,
-    pasajeroId: String,
-    vueloId: String
-  ): EventoEquipaje =
+  def pasajeroRegistrado(equipajeId: String, pasajeroId: String, vueloId: String ): EventoEquipaje =
     EventoEquipaje(
       eventId = UUID.randomUUID(),
       tipo = TipoEvento.PasajeroRegistrado,
@@ -43,11 +39,7 @@ object EventoEquipaje {
     )
 
   /** Construye el evento EQUIPAJE_ESCANEADO (cuando el RFID se registra). */
-  def equipajeEscaneado(
-    equipajeId: String,
-    codigoRFID: String,
-    peso: Double
-  ): EventoEquipaje =
+  def equipajeEscaneado(equipajeId: String, codigoRFID: String, peso: Double): EventoEquipaje =
     EventoEquipaje(
       eventId = UUID.randomUUID(),
       tipo = TipoEvento.EquipajeEscaneado,

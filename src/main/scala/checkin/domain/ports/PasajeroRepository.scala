@@ -5,8 +5,9 @@ import checkin.domain.model.Pasajero
 /**
  * Interfaz definida en el dominio.
  *
- * Las IMPLEMENTACIONES viven en `infrastructure` (PostgreSQL, InMemory, Mongo...).
- * El dominio NO sabe cuál se está usando — eso es inversión de dependencias.
+ * Las implementacionesviven en `infrastructure` (PostgreSQL, InMemory, Mongo...).
+ * Inversión de dependencias:
+ * El dominio no sabe cuál se está usando.
  */
 trait PasajeroRepository {
   def guardar(pasajero: Pasajero): Either[String, Pasajero]
