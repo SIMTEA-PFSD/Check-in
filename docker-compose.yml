@@ -1,0 +1,119 @@
+# ═══════════════════════════════════════════════════════════════
+#  Docker Compose · Stack completo del microservicio Check-In
+# ═══════════════════════════════════════════════════════════════
+#
+#  Servicios:
+#   - zookeeper + kafka   → Event bus
+#   - kafka-ui            → UI web para inspeccionar Kafka (localhost:8080)
+#   - checkin-service     → Microservicio de Check-In (localhost:8081)
+#
+#  Modos de uso:
+#
+#   1) DEV (correr el servicio con sbt, Kafka en Docker):
+#        docker compose up -d zookeeper kafka kafka-ui
+#        sbt run
+#
+#   2) FULL STACK (todo en Docker):
+#        sbt Docker/publishLocal    # genera imagen checkin-service:0.1.0
+#        docker compose --profile app up -d
+#
+#   3) Solo apagar:
+#        docker compose down         # detiene todo, conserva datos
+#        docker compose down -v      # detiene y borra datos (reset limpio)
+# ═══════════════════════════════════════════════════════════════
+
+# Generado completamente con ayuda de IA
+
+services:
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: checkin-zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: checkin-kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: checkin-kafka-ui
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: checkin-cluster
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      DYNAMIC_CONFIG_ENABLED: "true"
+
+  # ─── Base de datos (PostgreSQL) ─────────────────────────────
+  #  Una sola instancia Postgres para TODO el sistema.
+  #  Cada microservicio usa SU propia DB adentro (checkin_db,
+  #  seguridad_db, aerolinea_db…) — el patrón "database per
+  #  service" sin tener 5 contenedores de Postgres.
+  #
+  #  Para que tus compañeros agreguen sus DBs, basta con meter
+  #  más CREATE DATABASE en el init.sql.
+  postgres:
+    image: postgres:16-alpine
+    container_name: checkin-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER:             "checkin"
+      POSTGRES_PASSWORD:         "checkin123"
+      POSTGRES_DB:               "checkin_db"
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U checkin -d checkin_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ─── Microservicio Check-In ─────────────────────────────────
+  #  Se levanta SOLO con el profile "app":
+  #      docker compose --profile app up -d
+  #  Requiere haber corrido antes:   sbt Docker/publishLocal
+  checkin-service:
+    image: checkin-service:0.1.0
+    container_name: checkin-service
+    profiles: ["app"]
+    depends_on:
+      kafka:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+    environment:
+      HTTP_PORT: "8081"
+      # OJO: dentro de Docker se habla al broker por el listener interno
+      KAFKA_BOOTSTRAP: "kafka:29092"
+      KAFKA_TOPIC:     "registro.pasajero"
+      DB_URL:          "jdbc:postgresql://postgres:5432/checkin_db"
+      DB_USER:         "checkin"
+      DB_PASSWORD:     "checkin123"
+
+volumes:
+  postgres-data:

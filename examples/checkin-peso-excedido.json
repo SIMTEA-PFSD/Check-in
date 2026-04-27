@@ -1,0 +1,10 @@
+{
+  "pasajeroId":     "p-002",
+  "nombrePasajero": "Juan Pérez",
+  "documento":      "2000111222",
+  "email":          "juan@example.com",
+  "vueloId":        "LA4567",
+  "equipajes": [
+    { "codigoRFID": "RFID-PESADA", "peso": 30.5 }
+  ]
+}
