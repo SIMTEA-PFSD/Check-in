@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Check-in/checkin-service.iml" filepath="$PROJECT_DIR$/.idea/modules/Check-in/checkin-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Check-in/checkin-service.checkin-service-build.iml" filepath="$PROJECT_DIR$/.idea/modules/Check-in/checkin-service.checkin-service-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Check-in/checkin-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Check-in/checkin-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Check-in/checkin-service.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Check-in/checkin-service.test.iml" />
+    </modules>
+  </component>
+</project>

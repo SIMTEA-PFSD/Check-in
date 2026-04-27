@@ -1,0 +1,82 @@
+[debug] > Exec(;set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },(_root_.sbt.Global / SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile")) := _root_.scala.Some(_root_.sbt.file("C:/Users/ThinkPad/AppData/Local/Temp/sbt-structure6901898001855286089.xml")),(_root_.sbt.Global / SettingKey[_root_.java.lang.String]("sbtStructureOptions")) := "download, resolveSourceClassifiers, separateProdAndTestSources",(_root_.sbt.Global / SettingKey[_root_.scala.Boolean]("generateManagedSourcesDuringStructureDump")) := true);apply -cp "C:/Users/ThinkPad/AppData/Roaming/JetBrains/IntelliJIdea2025.2/plugins/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.3/2025.3.5/sbt-structure-extractor_2.12_1.3-2025.3.5.jar" "org.jetbrains.sbt.CreateTasks" "sbt.jetbrains.LogDownloadArtifacts";preferScala2;Global / dumpStructure, Some(bbb83b23-148c-4585-abe7-2f4787695ee0), Some(CommandSource(console0)))
+[debug] > Exec(set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },(_root_.sbt.Global / SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile")) := _root_.scala.Some(_root_.sbt.file("C:/Users/ThinkPad/AppData/Local/Temp/sbt-structure6901898001855286089.xml")),(_root_.sbt.Global / SettingKey[_root_.java.lang.String]("sbtStructureOptions")) := "download, resolveSourceClassifiers, separateProdAndTestSources",(_root_.sbt.Global / SettingKey[_root_.scala.Boolean]("generateManagedSourcesDuringStructureDump")) := true), None, Some(CommandSource(console0)))
+[info] Defining Global / generateManagedSourcesDuringStructureDump, Global / sbtStructureOptions and 2 others.
+[info] The new values will be used by cleanKeepGlobs
+[info] 	Run `last` for details.
+[debug] Defining 
+[debug] 	Global / generateManagedSourcesDuringStructureDump
+[debug] 	Global / sbtStructureOptions
+[debug] 	Global / sbtStructureOutputFile
+[debug] 	history
+[debug] 	shellPrompt
+[debug] 
+[debug] The new values will be used by 
+[debug] 	cleanKeepGlobs
+[info] Reapplying settings...
+[info] set current project to checkin-service (in build file:/C:/Users/ThinkPad/Check-in/)
+[debug] > Exec(apply -cp "C:/Users/ThinkPad/AppData/Roaming/JetBrains/IntelliJIdea2025.2/plugins/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.3/2025.3.5/sbt-structure-extractor_2.12_1.3-2025.3.5.jar" "org.jetbrains.sbt.CreateTasks" "sbt.jetbrains.LogDownloadArtifacts", None, Some(CommandSource(console0)))
+[info] Applying State transformations org.jetbrains.sbt.CreateTasks, sbt.jetbrains.LogDownloadArtifacts from C:/Users/ThinkPad/AppData/Roaming/JetBrains/IntelliJIdea2025.2/plugins/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.3/2025.3.5/sbt-structure-extractor_2.12_1.3-2025.3.5.jar
+[info] Reapplying settings...
+[info] set current project to checkin-service (in build file:/C:/Users/ThinkPad/Check-in/)
+[info] Reapplying settings...
+[info] set current project to checkin-service (in build file:/C:/Users/ThinkPad/Check-in/)
+[debug] > Exec(preferScala2, None, Some(CommandSource(console0)))
+[debug] > Exec(Global / dumpStructure, None, Some(CommandSource(console0)))
+[debug] Evaluating tasks: Global / dumpStructure
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] downloading https://repo1.maven.org/maven2/org/tpolecat/doobie-free_2.13/1.0.0-RC4/doobie-free_2.13-1.0.0-RC4-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/vault_2.13/3.5.0/vault_2.13-3.5.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/cats-effect-kernel_2.13/3.5.2/cats-effect-kernel_2.13-3.5.2-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/case-insensitive_2.13/1.4.0/case-insensitive_2.13-1.4.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.10.0/cats-kernel_2.13-2.10.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/tpolecat/typename_2.13/1.1.0/typename_2.13-1.1.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/vault_2.13/3.5.0/vault_2.13-3.5.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/http4s/http4s-ember-server_2.13/0.23.25/http4s-ember-server_2.13-0.23.25-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.10.0/cats-kernel_2.13-2.10.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/http4s/http4s-ember-core_2.13/0.23.25/http4s-ember-core_2.13-0.23.25-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/tpolecat/typename_2.13/1.1.0/typename_2.13-1.1.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/com/comcast/ip4s-core_2.13/3.4.0/ip4s-core_2.13-3.4.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/cats-effect-kernel_2.13/3.5.2/cats-effect-kernel_2.13-3.5.2-sources.jar
+[info] downloading https://repo1.maven.org/maven2/com/zaxxer/HikariCP/5.0.1/HikariCP-5.0.1-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/http4s/http4s-ember-core_2.13/0.23.25/http4s-ember-core_2.13-0.23.25-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/cats-free_2.13/2.9.0/cats-free_2.13-2.9.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/com/zaxxer/HikariCP/5.0.1/HikariCP-5.0.1-sources.jar
+[info] downloading https://repo1.maven.org/maven2/co/fs2/fs2-io_2.13/3.9.3/fs2-io_2.13-3.9.3-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/co/fs2/fs2-io_2.13/3.9.3/fs2-io_2.13-3.9.3-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/tpolecat/doobie-core_2.13/1.0.0-RC4/doobie-core_2.13-1.0.0-RC4-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/tpolecat/doobie-core_2.13/1.0.0-RC4/doobie-core_2.13-1.0.0-RC4-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/literally_2.13/1.1.0/literally_2.13-1.1.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/com/comcast/ip4s-core_2.13/3.4.0/ip4s-core_2.13-3.4.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/scodec/scodec-bits_2.13/1.1.38/scodec-bits_2.13-1.1.38-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/tpolecat/doobie-free_2.13/1.0.0-RC4/doobie-free_2.13-1.0.0-RC4-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/cats-effect_2.13/3.5.2/cats-effect_2.13-3.5.2-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/literally_2.13/1.1.0/literally_2.13-1.1.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/jawn-fs2_2.13/2.4.0/jawn-fs2_2.13-2.4.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/scodec/scodec-bits_2.13/1.1.38/scodec-bits_2.13-1.1.38-sources.jar
+[info] downloading https://repo1.maven.org/maven2/co/fs2/fs2-core_2.13/3.9.3/fs2-core_2.13-3.9.3-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/cats-effect_2.13/3.5.2/cats-effect_2.13-3.5.2-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.10.0/cats-core_2.13-2.10.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/cats-free_2.13/2.9.0/cats-free_2.13-2.9.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/http4s/http4s-core_2.13/0.23.25/http4s-core_2.13-0.23.25-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/case-insensitive_2.13/1.4.0/case-insensitive_2.13-1.4.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/http4s/http4s-dsl_2.13/0.23.25/http4s-dsl_2.13-0.23.25-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/co/fs2/fs2-core_2.13/3.9.3/fs2-core_2.13-3.9.3-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/tpolecat/doobie-hikari_2.13/1.0.0-RC4/doobie-hikari_2.13-1.0.0-RC4-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/jawn-fs2_2.13/2.4.0/jawn-fs2_2.13-2.4.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/http4s/http4s-jawn_2.13/0.23.25/http4s-jawn_2.13-0.23.25-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/http4s/http4s-ember-server_2.13/0.23.25/http4s-ember-server_2.13-0.23.25-sources.jar
+[info] downloading https://repo1.maven.org/maven2/com/twitter/hpack/1.0.2/hpack-1.0.2-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.10.0/cats-core_2.13-2.10.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.41.0/checker-qual-3.41.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/http4s/http4s-jawn_2.13/0.23.25/http4s-jawn_2.13-0.23.25-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/tpolecat/doobie-postgres_2.13/1.0.0-RC4/doobie-postgres_2.13-1.0.0-RC4-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.41.0/checker-qual-3.41.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/cats-parse_2.13/1.0.0/cats-parse_2.13-1.0.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/tpolecat/doobie-hikari_2.13/1.0.0-RC4/doobie-hikari_2.13-1.0.0-RC4-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/http4s/http4s-crypto_2.13/0.2.4/http4s-crypto_2.13-0.2.4-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/http4s/http4s-dsl_2.13/0.23.25/http4s-dsl_2.13-0.23.25-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/typelevel/log4cats-core_2.13/2.6.0/log4cats-core_2.13-2.6.0-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/http4s/http4s-core_2.13/0.23.25/http4s-core_2.13-0.23.25-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/http4s/http4s-server_2.13/0.23.25/http4s-server_2.13-0.23.25-sources.jar
+[info] downloaded https://repo1.maven.org/maven2/org/typelevel/cats-parse_2.13/1.0.0/cats-parse_2.13-1.0.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.1/postgresql-42.7.1-sources.jar
