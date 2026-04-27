@@ -3,9 +3,7 @@ package checkin.application
 /**
  * Errores de negocio del Check-In.
  *
- * Usamos ADT (Algebraic Data Type) con sealed trait: el compilador obliga
- * a que los `match` cubran todos los casos. Esto es 100% funcional —
- * preferimos tipos sobre excepciones.
+ * Usamos ADT (Algebraic Data Type) con sealed trait
  */
 sealed trait CheckInError {
   def mensaje: String

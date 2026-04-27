@@ -13,11 +13,7 @@ import scala.util.control.NonFatal
 /**
  * Postgres para el puerto PasajeroRepository.
  *
- * Usa Doobie: escribimos SQL a mano como `sql"..."` (interpolación segura
- * que previene SQL injection), y lo ejecutamos vía Transactor.
- *
- * Usa UPSERT (`ON CONFLICT DO UPDATE`) — así el mismo pasajero puede
- * hacer múltiples check-ins sin que explote por clave duplicada.
+ * Usa Doobie: escribimos SQL a mano como sql"..."
  */
 final class PostgresPasajeroRepository(xa: HikariTransactor[IO])(implicit runtime: IORuntime) extends PasajeroRepository {
 

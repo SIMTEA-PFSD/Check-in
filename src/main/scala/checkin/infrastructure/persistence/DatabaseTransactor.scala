@@ -6,11 +6,9 @@ import com.zaxxer.hikari.HikariConfig
 import doobie.hikari.HikariTransactor
 
 /**
- * Construye un `HikariTransactor[IO]` como `Resource` — garantiza que el
- * pool de conexiones se CIERRA correctamente cuando la app termina.
+ * Construye un HikariTransactor[IO] como resource — garantiza que el
+ * pool de conexiones se cierra correctamente cuando la app termina.
  *
- * Nota: en Doobie 1.0.0-RC4 el Transactor maneja su propio scheduling
- * via cats-effect 3 (Async), ya no hace falta pasar un ExecutionContext.
  */
 object DatabaseTransactor {
 

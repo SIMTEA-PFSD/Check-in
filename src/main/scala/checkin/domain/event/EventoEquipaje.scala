@@ -3,15 +3,6 @@ package checkin.domain.event
 import java.time.Instant
 import java.util.UUID
 
-/**
- * Value object — Payload que viaja por Kafka.
- *
- * Es inmutable. Cualquier consumer (Spark Streaming, microservicios) lo
- * deserializa desde JSON y puede reconstruirlo con total seguridad.
- *
- * `payload` es un Map[String, String] para mantener la flexibilidad sin
- * tener que definir una subclase por tipo de evento (simplifica el MVP).
- */
 final case class EventoEquipaje(
   eventId: UUID,
   tipo: TipoEvento,
@@ -23,7 +14,7 @@ final case class EventoEquipaje(
 
 object EventoEquipaje {
 
-  /** Construye el evento PASAJERO_REGISTRADO (emitido por Check-in). */
+  /** Construye el evento PASAJERO_REGISTRADO*/
   def pasajeroRegistrado(equipajeId: String, pasajeroId: String, vueloId: String ): EventoEquipaje =
     EventoEquipaje(
       eventId = UUID.randomUUID(),

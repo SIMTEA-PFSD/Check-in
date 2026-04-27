@@ -1,15 +1,11 @@
-# ===============================================================
-#  probar-api.ps1
-#  Dispara un flujo end-to-end contra Check-in.
-#  JSON inline + IDs unicos por corrida (para evitar UNIQUE).
-#  Se puede ejecutar desde cualquier carpeta.
-# ===============================================================
+
+# probar-api.ps1
+# Dispara un flujo end-to-end contra Check-in.
 
 $ErrorActionPreference = "Continue"
 
 $baseUrl = "http://localhost:8081"
 
-# Stamp unico para esta corrida: evita chocar contra el UNIQUE de codigo_rfid
 $stamp = Get-Date -Format "yyyyMMddHHmmssfff"
 
 function Show-Response {
@@ -19,9 +15,8 @@ function Show-Response {
     $response | ConvertTo-Json -Depth 10
 }
 
-# --- 1. HEALTH ------------------------------------------------
 Write-Host ""
-Write-Host "=== 1. HEALTH CHECK ===" -ForegroundColor Yellow
+Write-Host "== 1. HEALTH CHECK ==" -ForegroundColor Yellow
 try {
     $r = Invoke-RestMethod -Uri "$baseUrl/health" -Method Get
     $r | ConvertTo-Json
@@ -31,7 +26,6 @@ catch {
     exit 1
 }
 
-# --- 2. CHECK-IN EXITOSO (dispara el flujo completo) ----------
 Write-Host ""
 Write-Host "=== 2. CHECK-IN EXITOSO - 2 maletas (dispara la cadena Check-in -> Security -> Dispatcher) ===" -ForegroundColor Yellow
 $bodyExitoso = @{
@@ -58,7 +52,6 @@ catch {
     if ($_.ErrorDetails) { Write-Host $_.ErrorDetails.Message -ForegroundColor Red }
 }
 
-# --- 3. PESO EXCEDIDO (debe dar 400) --------------------------
 Write-Host ""
 Write-Host "=== 3. CHECK-IN CON PESO EXCEDIDO - debe dar 400 ===" -ForegroundColor Yellow
 $bodyPeso = @{
@@ -83,7 +76,6 @@ catch {
     if ($_.ErrorDetails) { Write-Host "Body:" $_.ErrorDetails.Message }
 }
 
-# --- 4. SIN EQUIPAJES (debe dar 400) --------------------------
 Write-Host ""
 Write-Host "=== 4. CHECK-IN SIN EQUIPAJES - debe dar 400 ===" -ForegroundColor Yellow
 $bodySinEq = @{
@@ -105,7 +97,6 @@ catch {
     if ($_.ErrorDetails) { Write-Host "Body:" $_.ErrorDetails.Message }
 }
 
-# --- 5. GET equipajes del pasajero creado ---------------------
 if ($pasajeroCreado) {
     Write-Host ""
     Write-Host "=== 5. GET equipajes del pasajero recien creado ===" -ForegroundColor Yellow
@@ -118,7 +109,6 @@ if ($pasajeroCreado) {
     }
 }
 
-# --- Cierre ---------------------------------------------------
 Write-Host ""
 Write-Host "============================================================" -ForegroundColor Green
 Write-Host " Pruebas completadas." -ForegroundColor Green

@@ -6,10 +6,7 @@ import checkin.domain.ports.EquipajeRepository
 import scala.collection.concurrent.TrieMap
 
 /**
- * Implementación en memoria del EquipajeRepository.
- *
- * Cuando se integre PostgreSQL, esta clase se reemplaza con una que
- * use JDBC/Slick/Doobie — el caso de uso ni se entera.
+ * Para pruebas.
  */
 class InMemoryEquipajeRepository extends EquipajeRepository {
 

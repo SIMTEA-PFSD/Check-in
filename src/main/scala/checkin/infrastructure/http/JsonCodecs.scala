@@ -6,14 +6,9 @@ import io.circe.syntax._
 
 /**
  * Codificación/decodificación JSON - DTOs de aplicación.
- *
- * Usamos Circe con constructores manuales (forProductN) en vez de auto-
- * derivación por macros. Es más explícito y más fácil de depurar —
- * se ve exactamente qué campos JSON se mapean a qué campos del case class.
  */
 object JsonCodecs {
 
-  // ─── Decoders (JSON entrante → objetos Scala) ────────────
 
   implicit val equipajeInputDecoder: Decoder[EquipajeInput] =
     Decoder.forProduct2("codigoRFID", "peso")(EquipajeInput.apply)
@@ -24,8 +19,6 @@ object JsonCodecs {
       "email", "vueloId", "equipajes"
     )(CheckInCommand.apply)
 
-  // ─── Encoders (objetos Scala → JSON saliente) ────────────
-
   implicit val checkInResponseEncoder: Encoder[CheckInResponse] =
     Encoder.forProduct4(
       "pasajeroId", "vueloId",
@@ -34,15 +27,15 @@ object JsonCodecs {
 
   /**
    * Encoder del ADT de errores. Devuelve un JSON con el tipo y el mensaje,
-   * útil para que el cliente del API sepa qué error fue sin parsear strings.
+   * para que el cliente del API sepa qué error fue.
    */
   implicit val checkInErrorEncoder: Encoder[CheckInError] = Encoder.instance { err =>
     val tipo = err match {
-      case _: CheckInError.PasajeroInvalido       => "PasajeroInvalido"
-      case _: CheckInError.EquipajeExcedePeso     => "EquipajeExcedePeso"
+      case _: CheckInError.PasajeroInvalido => "PasajeroInvalido"
+      case _: CheckInError.EquipajeExcedePeso => "EquipajeExcedePeso"
       case _: CheckInError.ErrorPublicacionEvento => "ErrorPublicacionEvento"
-      case _: CheckInError.ErrorPersistencia      => "ErrorPersistencia"
-      case _: CheckInError.SinEquipajes           => "SinEquipajes"
+      case _: CheckInError.ErrorPersistencia => "ErrorPersistencia"
+      case _: CheckInError.SinEquipajes => "SinEquipajes"
     }
     Json.obj(
       "error"   -> tipo.asJson,

@@ -1,13 +1,10 @@
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\ThinkPad\SIMTEA-PFSD\Check-in\src\main\scala\checkin\infrastructure\persistence\PostgresPasajeroRepository.scala:7:15: Unused import[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\ThinkPad\SIMTEA-PFSD - copia\Check-in\src\main\scala\checkin\infrastructure\persistence\PostgreOutboxRepository.scala:6:15: Unused import[0m
 [0m[[0m[33mwarn[0m] [0m[0mimport doobie._[0m
 [0m[[0m[33mwarn[0m] [0m[0m              ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\ThinkPad\SIMTEA-PFSD\Check-in\src\main\scala\checkin\infrastructure\persistence\PostgresEquipajeRepository.scala:44:9: Block result was adapted via implicit conversion (method apply) taking a by-name parameter[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\ThinkPad\SIMTEA-PFSD - copia\Check-in\src\main\scala\checkin\infrastructure\persistence\PostgreOutboxRepository.scala:30:16: Block result was adapted via implicit conversion (method apply) taking a by-name parameter[0m
+[0m[[0m[33mwarn[0m] [0m[0m      """.query[(UUID, String, String, String)].to[List][0m
+[0m[[0m[33mwarn[0m] [0m[0m               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\ThinkPad\SIMTEA-PFSD - copia\Check-in\src\main\scala\checkin\infrastructure\persistence\PostgresEquipajeRepository.scala:36:9: Block result was adapted via implicit conversion (method apply) taking a by-name parameter[0m
 [0m[[0m[33mwarn[0m] [0m[0m    Read[(String, String, Double, EstadoEquipaje, String, String, Instant, Option[Instant], Option[String])][0m
 [0m[[0m[33mwarn[0m] [0m[0m        ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\ThinkPad\SIMTEA-PFSD\Check-in\src\main\scala\checkin\infrastructure\persistence\PostgresPasajeroRepository.scala:51:16: Block result was adapted via implicit conversion (method apply) taking a by-name parameter[0m
-[0m[[0m[33mwarn[0m] [0m[0m      """.query[Pasajero].option[0m
-[0m[[0m[33mwarn[0m] [0m[0m               ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\ThinkPad\SIMTEA-PFSD\Check-in\src\main\scala\checkin\infrastructure\persistence\PostgresPasajeroRepository.scala:63:16: Block result was adapted via implicit conversion (method apply) taking a by-name parameter[0m
-[0m[[0m[33mwarn[0m] [0m[0m      """.query[Pasajero].option[0m
-[0m[[0m[33mwarn[0m] [0m[0m               ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mfour warnings found[0m
+[0m[[0m[33mwarn[0m] [0m[0mthree warnings found[0m

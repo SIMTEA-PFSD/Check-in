@@ -23,6 +23,7 @@
 --
 -- (Descomenten cuando se integren.)
 
+-- Generado completamente con ayuda de IA
 
 -- ─── Tablas del microservicio Check-In ──────────────────────────
 \connect checkin_db;
@@ -52,3 +53,24 @@ CREATE TABLE IF NOT EXISTS equipajes (
 CREATE INDEX IF NOT EXISTS idx_equipajes_pasajero ON equipajes(pasajero_id);
 CREATE INDEX IF NOT EXISTS idx_equipajes_vuelo    ON equipajes(vuelo_id);
 CREATE INDEX IF NOT EXISTS idx_equipajes_estado   ON equipajes(estado);
+
+-- ─── Outbox Pattern ─────────────────────────────────────
+-- Tabla donde Check-in escribe los eventos en la MISMA transacción
+-- que los inserts de equipajes. Un relay aparte los lee y publica
+-- a Kafka. Esto garantiza consistencia DB↔Kafka.
+CREATE TABLE IF NOT EXISTS outbox_events (
+    event_id      UUID         PRIMARY KEY,
+    topico        VARCHAR(64)  NOT NULL,
+    clave         VARCHAR(64)  NOT NULL,
+    payload       TEXT         NOT NULL,
+    created_at    TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
+    published_at  TIMESTAMPTZ,
+    intentos      INT          NOT NULL DEFAULT 0,
+    ultimo_error  TEXT
+);
+
+-- Índice parcial: solo los pendientes (published_at IS NULL).
+-- Acelera el polling del relay.
+CREATE INDEX IF NOT EXISTS idx_outbox_pendientes
+    ON outbox_events(created_at)
+    WHERE published_at IS NULL;

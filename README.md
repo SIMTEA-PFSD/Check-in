@@ -177,7 +177,6 @@ sbt run
 bash examples/probar-api.sh   # Mac/Linux
 ```
 
-Guía detallada paso a paso en **[COMO_CORRER.md](./COMO_CORRER.md)**.
 
 ---
 

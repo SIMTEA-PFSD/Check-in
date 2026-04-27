@@ -1,37 +1,9 @@
-[0m[[0m[31merror[0m] [0m[0mcom.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: FATAL: role "checkin" does not exist[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)[0m
-[0m[[0m[31merror[0m] [0m[0m	at doobie.hikari.HikariTransactor$.$anonfun$fromHikariConfigCustomEc$1(HikariTransactor.scala:116)[0m
-[0m[[0m[31merror[0m] [0m[0m	at delay @ doobie.hikari.HikariTransactor$.fromHikariConfigCustomEc(HikariTransactor.scala:116)[0m
-[0m[[0m[31merror[0m] [0m[0m	at main$ @ checkin.Main$.main(Main.scala:31)[0m
-[0m[[0m[31merror[0m] [0m[0m	at main$ @ checkin.Main$.main(Main.scala:31)[0m
-[0m[[0m[31merror[0m] [0m[0m	at main$ @ checkin.Main$.main(Main.scala:31)[0m
-[0m[[0m[31merror[0m] [0m[0m	at delay @ doobie.util.ExecutionContexts$.fixedThreadPool(ExecutionContexts.scala:17)[0m
-[0m[[0m[31merror[0m] [0m[0m	at main$ @ checkin.Main$.main(Main.scala:31)[0m
-[0m[[0m[31merror[0m] [0m[0m	at main$ @ checkin.Main$.main(Main.scala:31)[0m
-[0m[[0m[31merror[0m] [0m[0m	at main$ @ checkin.Main$.main(Main.scala:31)[0m
-[0m[[0m[31merror[0m] [0m[0m	at delay @ doobie.hikari.HikariTransactor$.fromHikariConfig(HikariTransactor.scala:128)[0m
-[0m[[0m[31merror[0m] [0m[0mCaused by: org.postgresql.util.PSQLException: FATAL: role "checkin" does not exist[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2712)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2824)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:174)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:313)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.Driver.makeConnection(Driver.java:444)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.Driver.connect(Driver.java:297)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)[0m
-[0m[[0m[31merror[0m] [0m[0m	at doobie.hikari.HikariTransactor$.$anonfun$fromHikariConfigCustomEc$1(HikariTransactor.scala:116)[0m
-[0m[[0m[31merror[0m] [0m[0m	at cats.effect.IOFiber.runLoop(IOFiber.scala:330)[0m
-[0m[[0m[31merror[0m] [0m[0m	at cats.effect.IOFiber.execR(IOFiber.scala:1364)[0m
-[0m[[0m[31merror[0m] [0m[0m	at cats.effect.IOFiber.run(IOFiber.scala:112)[0m
-[0m[[0m[31merror[0m] [0m[0m	at cats.effect.unsafe.WorkerThread.run(WorkerThread.scala:702)[0m
-[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: FATAL: role "checkin" does not exist[0m
+[0m[[0m[31merror[0m] [0m[0mjava.net.BindException: Address already in use: bind[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.Net.bind0(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.Net.bind(Net.java:567)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.Net.bind(Net.java:556)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.AsynchronousServerSocketChannelImpl.bind(AsynchronousServerSocketChannelImpl.java:164)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.nio.channels.AsynchronousServerSocketChannel.bind(AsynchronousServerSocketChannel.java:198)[0m
+[0m[[0m[31merror[0m] [0m[0m	at fs2.io.net.SocketGroupCompanionPlatform$AsyncSocketGroup.$anonfun$serverResource$7(SocketGroupPlatform.scala:102)[0m
+[0m[[0m[31merror[0m] [0m[0m	at delay @ fs2.io.net.SocketGroupCompanionPlatform$AsyncSocketGroup.$anonfun$serverResource$6(SocketGroupPlatform.scala:99)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) java.net.BindException: Address already in use: bind[0m

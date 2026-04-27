@@ -4,69 +4,66 @@ import cats.effect.{ExitCode, IO, IOApp}
 import checkin.application.CheckInUseCase
 import checkin.infrastructure.config.AppConfig
 import checkin.infrastructure.http.{CheckInRoutes, HttpServer}
-import checkin.infrastructure.kafka.KafkaEventPublisher
+import checkin.infrastructure.kafka.{KafkaEventPublisher, OutboxRelay}
 import checkin.infrastructure.persistence.{
   DatabaseTransactor,
   PostgresEquipajeRepository,
+  PostgresOutboxRepository,
   PostgresPasajeroRepository
 }
 
-/**
- * ═════════════════════════════════════════════════════════════
- *  PUNTO DE ENTRADA DEL MICROSERVICIO CHECK-IN
- * ═════════════════════════════════════════════════════════════
- *
- *  Composition Root:
- *   1. Carga configuración
- *   2. Abre el pool de Postgres (Resource → se cierra solo al apagar)
- *   3. Instancia los adaptadores de infrastructure
- *   4. Construye el caso de uso (inyecta los puertos)
- *   5. Arranca el servidor HTTP en el puerto configurado
- *   6. Mantiene el servidor vivo hasta Ctrl+C
- *   7. Al cerrar, libera productor Kafka + pool DB + servidor HTTP
- *
- *  Extender IOApp nos da un runtime funcional con manejo automático
- *  de señales (SIGINT) y cierre limpio de recursos.
- */
+import scala.concurrent.duration._
+
+
 object Main extends IOApp {
 
   override def run(args: List[String]): IO[ExitCode] = {
-
-    // 1. Configuración
-    val config = AppConfig.load()
-
-    // 2. Kafka (productor) — no es Resource, se cierra en guarantee()
+    val config    = AppConfig.load()
     val publisher = new KafkaEventPublisher(config)
 
-    // IORuntime implícito que necesitan los repos para unsafeRunSync
     implicit val rt = runtime
 
     val banner: String =
       s"""|
           |══════════════════════════════════════════════════
-          |  Microservicio Check-In · ARRIBA
+          |  Microservicio Check-In - Arriba
           |══════════════════════════════════════════════════
-          |  HTTP   → http://localhost:${config.httpPort}
-          |  Kafka  → ${config.kafkaBootstrap}
-          |  Tópico → ${config.kafkaTopic}
-          |  DB     → ${config.db.url}
+          |  HTTP        -> http://localhost:${config.httpPort}
+          |  Kafka       -> ${config.kafkaBootstrap}
+          |  Tópico      -> ${config.kafkaTopic}
+          |  DB          -> ${config.db.url}
+          |  Outbox poll -> cada ${config.outbox.pollIntervalSeconds}s (lote ${config.outbox.batchSize})
           |──────────────────────────────────────────────────
-          |  Endpoints disponibles:
-          |    · GET  /health
-          |    · POST /api/v1/checkin
+          |  Endpoints:
+          |    GET  /health
+          |    POST /api/v1/checkin
           |══════════════════════════════════════════════════
           |  (Ctrl+C para detener)
           |""".stripMargin
 
-    // 3. Recursos (DB pool + HTTP server) — se cierran en orden inverso.
     val programa = for {
-      xa     <- DatabaseTransactor.build(config.db)
+      xa <- DatabaseTransactor.build(config.db)
       server <- {
         val pasajeroRepo = new PostgresPasajeroRepository(xa)
         val equipajeRepo = new PostgresEquipajeRepository(xa)
-        val useCase      = new CheckInUseCase(pasajeroRepo, equipajeRepo, publisher)
-        val routes       = new CheckInRoutes(useCase)
-        HttpServer.build(routes, config.httpPort)
+        val outboxRepo   = new PostgresOutboxRepository(xa)
+
+        val useCase = new CheckInUseCase(pasajeroRepo, equipajeRepo)
+        val routes  = new CheckInRoutes(useCase)
+
+        val relay = new OutboxRelay(
+          outboxRepo,
+          publisher,
+          intervalo = config.outbox.pollIntervalSeconds.seconds,
+          loteSize  = config.outbox.batchSize
+        )
+
+        // Lanzamos el relay como fiber al construir el server.
+        // El fiber se cancela cuando el Resource del server se cierra.
+        for {
+          relayFiber <- cats.effect.Resource.make(relay.loop.start)(_.cancel)
+          srv        <- HttpServer.build(routes, config.httpPort)
+        } yield (srv, relayFiber)
       }
     } yield server
 

@@ -2,6 +2,7 @@
 //  Microservicio Check-in - Sistema de Gestión de Equipajes
 //  Programación Funcional y Sistemas Distribuidos
 // ============================================================
+// Generado completamente con ayuda de IA
 
 name         := "checkin-service"
 version      := "0.1.0"

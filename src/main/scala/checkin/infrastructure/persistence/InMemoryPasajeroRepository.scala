@@ -6,13 +6,7 @@ import checkin.domain.ports.PasajeroRepository
 import scala.collection.concurrent.TrieMap
 
 /**
- * Implementación en memoria del PasajeroRepository.
- *
- * Útil para el MVP (semana 1) y para tests. Cuando el equipo integre
- * PostgreSQL, basta con crear `PostgresPasajeroRepository extends PasajeroRepository`
- * y cambiar solo el Main.scala — ni el caso de uso ni el dominio cambian.
- *
- * Usa TrieMap porque es thread-safe (varios hilos pueden usarlo a la vez).
+ * Para pruebas.
  */
 class InMemoryPasajeroRepository extends PasajeroRepository {
 
